@@ -1,1 +1,1 @@
-# capston_ecommerce
+# capstone_ecommerce
