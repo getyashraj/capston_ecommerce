@@ -83,8 +83,8 @@ WSGI_APPLICATION = 'ecomm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'capstone',
-        'USER': 'capstone',
+        'NAME': 'dummy',
+        'USER': 'dummy',
         'PASSWORD': '123456789',
         'HOST': os.environ.get("SQL_HOST", default='127.0.0.1'),
         'PORT': '5432'
