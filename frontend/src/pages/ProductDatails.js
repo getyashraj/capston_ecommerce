@@ -14,6 +14,9 @@ import * as TiIcons from "react-icons/ti";
 import * as FaIcons from "react-icons/fa";
 import * as RiIcons from "react-icons/ri";
 
+import { ToastContainer, toast } from "react-toastify";
+
+
 function ProductDatails({ Products }) {
   const dispatch = useDispatch();
 
@@ -52,10 +55,13 @@ function ProductDatails({ Products }) {
     await dispatch(load_product_actions.add_to_wishlist_handle(Product));
   };
 
-  
+  const toastFunc = (message) => {
+     toast(message);
+  }
 
   return (
     <div className="detail">
+      <ToastContainer />
       <div class="breadcrumb-option">
         <div class="container">
           <div class="row">
@@ -118,7 +124,7 @@ function ProductDatails({ Products }) {
                     <p
                       type="submit"
                       class="cart-btn"
-                      onClick={() => addToCart(Product, qty)}
+                      onClick={() => { addToCart(Product, qty); toastFunc("Item Added SuccessFully.")}}
                     >
                       <RiIcons.RiShoppingBagLine
                         style={{ marginBottom: 7 + "px" }}
