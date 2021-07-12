@@ -9,16 +9,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
-
-
 function Account({ User, isAuthenticated }) {
-  // console.log(User);
   const [formData, setFormData] = useState({
-    first_name: User.first_name ? User.first_name : "",
-    last_name: User.last_name,
-    address: User.address,
-    phone: User.phone,
-    email: User.email,
+    first_name: User ? User.first_name : "",
+    last_name: User ? User.last_name : "",
+    address: User ? User.address : "",
+    phone: User ? User.phone : "",
+    email: User ? User.email : "",
   });
 
   const onChange = (e) =>
@@ -26,15 +23,19 @@ function Account({ User, isAuthenticated }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    UpdateAccount.handleUpdate(User.id, formData, setFormData)
+    UpdateAccount.handleUpdate(User.id, formData, setFormData, toastFunc);
     console.log(formData);
   };
 
+  const toastFunc = (message) => {
+     toast(message);
+  }
 
 
   if (!isAuthenticated) return <Redirect to="/login" />;
   return (
     <div className="checkout">
+      <ToastContainer />
       <div className="breadcrumb-option">
         <div className="container">
           <div className="row">
