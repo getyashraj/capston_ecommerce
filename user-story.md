@@ -15,3 +15,5 @@
 - Shows either hard errors or blank page if data not found; Add custom error pages.
 - Can not remove items from the Wishlist.
 - Clicking on "Add to Cart" need to give a toast message. ( Completed. )
+- Clicking on "wishlist" icon in product details need to give a toast message. ( Completed. )
+- Making the image clikable and redirecting to product page. ( Completed. )
