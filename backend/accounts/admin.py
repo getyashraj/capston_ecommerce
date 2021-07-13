@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserAccount
+from .models import UserAccount, Address
 
 
 class UserAccountAdmin(admin.ModelAdmin):
@@ -13,7 +13,8 @@ class UserAccountAdmin(admin.ModelAdmin):
         'is_superuser',
         'is_staff',
         'is_active'
-        )
+    )
 
 
 admin.site.register(UserAccount, UserAccountAdmin)
+admin.site.register(Address)

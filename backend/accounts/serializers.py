@@ -1,3 +1,4 @@
+from accounts.models import Address
 from djoser.serializers import UserCreateSerializer
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
@@ -27,3 +28,9 @@ class UserUpdateSerializer(serializers.ModelSerializer):
             'last_name',
             'phone',
             'address')
+
+
+class AddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = '__all__'

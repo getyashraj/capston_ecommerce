@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from accounts.models import Address
 
 
 class Category(models.Model):
@@ -72,6 +73,8 @@ class Orders(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="orders")
+    address_id = models.ForeignKey(
+        Address, default='', on_delete=models.DO_NOTHING)
     total = models.FloatField()
     payment_id = models.CharField(max_length=50)
     order_id = models.CharField(max_length=50, unique=True)
