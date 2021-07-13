@@ -11,12 +11,9 @@ import * as RiIcons from "react-icons/ri";
 import * as BsIcons from "react-icons/bs";
 import Background from "./img/product-1.jpg";
 
-function Products({ Products,category }) {
+function Products({ Products, category }) {
   const dispatch = useDispatch();
 
-  
-  
-  
   const getproduct = async () => {
     await dispatch(load_product_actions.load_product());
   };
@@ -33,25 +30,21 @@ function Products({ Products,category }) {
   };
 
   const categoryfilter = async (categoryname) => {
-    console.log(categoryname)
-    console.log(Products)
+    console.log(categoryname);
+    console.log(Products);
     // Products=Products.filter((product) => product.category === "man")
     // console.log(Products)
-    
   };
 
-  
-  let avgrate=[];
-  for(var product=0;product<Products.length;product++){  
-    let totalrating=0;
-    for(var j = 0;j<Products[product].rating_list.length;j++){            
-      totalrating=totalrating+Products[product].rating_list[j]["rating"];      
+  let avgrate = [];
+  for (var product = 0; product < Products.length; product++) {
+    let totalrating = 0;
+    for (var j = 0; j < Products[product].rating_list.length; j++) {
+      totalrating = totalrating + Products[product].rating_list[j]["rating"];
     }
     var result = totalrating / Products[product].rating_list.length;
     const pushdata = Math.floor(result);
-    avgrate.push(pushdata)
-
-
+    avgrate.push(pushdata);
   }
 
   var picon = {
@@ -77,16 +70,6 @@ function Products({ Products,category }) {
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-
-
       <section class="shop spad">
         <div class="container">
           <div class="row">
@@ -100,33 +83,27 @@ function Products({ Products,category }) {
                     <div class="accordion" id="accordionExample">
                       <div class="card">
                         <div class="card-heading">
-                        
                           <Link to="/products/woman">Women </Link>
-                          
                         </div>
                       </div>
                       <div class="card">
                         <div class="card-heading">
-                    
-                         <Link to='/products/man'>Men </Link>
+                          <Link to="/products/man">Men </Link>
                         </div>
                       </div>
                       <div class="card">
                         <div class="card-heading">
-                        <Link to='/products/kid'>Kids </Link>
-                         
+                          <Link to="/products/kid">Kids </Link>
                         </div>
                       </div>
                       <div class="card">
                         <div class="card-heading">
-                        <Link to='/products/accessories'>Accessories </Link>
-                     
+                          <Link to="/products/accessories">Accessories </Link>
                         </div>
                       </div>
                       <div class="card">
                         <div class="card-heading">
-                        <Link to='/products/cosmetic'>Cosmetic</Link>
-                          
+                          <Link to="/products/cosmetic">Cosmetic</Link>
                         </div>
                       </div>
                     </div>
@@ -140,52 +117,47 @@ function Products({ Products,category }) {
                 {Products.map((Product, index) => (
                   <div key={index} class="col-lg-4 col-md-6">
                     <div class="product__item">
-                      
                       <div
                         class="product__item__pic set-bg"
                         data-setbg={Background}
                         style={Product.img}
                       >
-                        <img src={Product.image} alt="" />
-                        <div class="label new">New</div>
-                        <ul class="product__hover">
-                          <li>
-                            <Link
-                              to={`/productdetails/${Product.id}`}
-                              class="image-popup"
-                            >
-                              <BsIcons.BsWallet style={picon} />
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="/wishlist"
-                              onClick={() => addToWishlist(Product)}
-                            >
-                              <AiIcons.AiOutlineHeart style={picon} />
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="/cart"
-                              onClick={() => addToCart(Product, 1)}
-                            >
-                              {" "}
-                              <RiIcons.RiShoppingBagLine style={picon} />
-                            </Link>
-                          </li>
-                        </ul>
+                        <Link
+                          to={`/productdetails/${Product.id}`}
+                          class="image-popup"
+                        >
+                          <img src={Product.image} alt="" />
+                          <div class="label new">New</div>
+                          <ul class="product__hover">
+                            <li>
+                              <Link
+                                to="/wishlist"
+                                onClick={() => addToWishlist(Product)}
+                              >
+                                <AiIcons.AiOutlineHeart style={picon} />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                to="/cart"
+                                onClick={() => addToCart(Product, 1)}
+                              >
+                                {" "}
+                                <RiIcons.RiShoppingBagLine style={picon} />
+                              </Link>
+                            </li>
+                          </ul>
+                        </Link>
                       </div>
                       <div class="product__item__text">
                         <h6>
                           <Link to="#">{Product.title}</Link>
                         </h6>
-                        
+
                         <div class="rating">
-                        {[...Array(avgrate[index])].map((_, i) => (
-                          <AiIcons.AiTwotoneStar />
-                        ))}
-                          
+                          {[...Array(avgrate[index])].map((_, i) => (
+                            <AiIcons.AiTwotoneStar />
+                          ))}
                         </div>
                         <div class="product__price">Rs. {Product.price}</div>
                       </div>
@@ -193,47 +165,23 @@ function Products({ Products,category }) {
                     {/* </Link> */}
                   </div>
                 ))}
-
-            
-            
-            
               </div>
             </div>
           </div>
         </div>
       </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
   );
 }
 
 // export default Products
 
-const mapStateToProps = (state,ownProps) => ({
-  // Products: state.prostore.Products,  
+const mapStateToProps = (state, ownProps) => ({
+  // Products: state.prostore.Products,
   Products: state.prostore.Products.filter(
     (product) => product.category === ownProps.match.params.category
   ),
   category: ownProps.match.params.category,
-  
-  
 });
 
 export default connect(mapStateToProps)(Products);

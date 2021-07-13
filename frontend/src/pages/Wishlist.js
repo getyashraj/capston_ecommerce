@@ -75,32 +75,29 @@ function Wishlist({ wishlistdata }) {
                         data-setbg={Background}
                         style={wishlist.img}
                       >
-                        <img src={wishlist.image} alt="" />
-                        <div class="label new">New</div>
-                        <ul class="product__hover">
-                          <li>
-                            <Link
-                              to={`/productdetails/${wishlist.id}`}
-                              class="image-popup"
-                            >
-                              <BsIcons.BsWallet style={picon} />
-                            </Link>
-                          </li>
-                          <li>
-                            <Link to="/">
-                              <AiIcons.AiOutlineHeart style={picon} />
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="/cart"
-                              onClick={() => addToCart(wishlist, 1)}
-                            >
-                              {" "}
-                              <RiIcons.RiShoppingBagLine style={picon} />
-                            </Link>
-                          </li>
-                        </ul>
+                        <Link
+                          to={`/productdetails/${wishlist.id}`}
+                          class="image-popup"
+                        >
+                          <img src={wishlist.image} alt="" />
+                          <div class="label new">New</div>
+                          <ul class="product__hover">
+                            <li>
+                              <Link to="/">
+                                <AiIcons.AiOutlineHeart style={picon} />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                to="/cart"
+                                onClick={() => addToCart(wishlist, 1)}
+                              >
+                                {" "}
+                                <RiIcons.RiShoppingBagLine style={picon} />
+                              </Link>
+                            </li>
+                          </ul>
+                        </Link>
                       </div>
                       <div class="product__item__text">
                         <h6>

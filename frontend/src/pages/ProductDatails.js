@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -15,7 +13,6 @@ import * as FaIcons from "react-icons/fa";
 import * as RiIcons from "react-icons/ri";
 
 import { ToastContainer, toast } from "react-toastify";
-
 
 function ProductDatails({ Products }) {
   const dispatch = useDispatch();
@@ -56,8 +53,8 @@ function ProductDatails({ Products }) {
   };
 
   const toastFunc = (message) => {
-     toast(message);
-  }
+    toast(message);
+  };
 
   return (
     <div className="detail">
@@ -73,7 +70,7 @@ function ProductDatails({ Products }) {
                 <FaIcons.FaAngleRight />
                 <Link to="/">Women’s</Link>
                 <FaIcons.FaAngleRight />
-                
+
                 <span>Essential structured blazer</span>
               </div>
             </div>
@@ -93,9 +90,7 @@ function ProductDatails({ Products }) {
                 <div class="product__details__text">
                   <h3>
                     {Product.title}
-                    <span style={{ marginLeft: 1 + "px" }}>
-                      
-                    </span>
+                    <span style={{ marginLeft: 1 + "px" }}></span>
                   </h3>
                   <div class="rating">
                     {[...Array(avgrating)].map((_, i) => (
@@ -114,7 +109,7 @@ function ProductDatails({ Products }) {
                           -
                         </span>
                         <label className="qtybtn center_side">{qty}</label>
-                        
+
                         <span class="qtybtn right_side" onClick={incrementQty}>
                           +
                         </span>
@@ -124,20 +119,25 @@ function ProductDatails({ Products }) {
                     <p
                       type="submit"
                       class="cart-btn"
-                      onClick={() => { addToCart(Product, qty); toastFunc("Item Added SuccessFully.")}}
+                      onClick={() => {
+                        addToCart(Product, qty);
+                        toastFunc("Item Added SuccessFully.");
+                      }}
                     >
                       <RiIcons.RiShoppingBagLine
                         style={{ marginBottom: 7 + "px" }}
                       />{" "}
                       Add to cart
                     </p>
-                  
 
                     <ul>
                       <li>
                         <p
                           className="wishlisticon"
-                          onClick={() => addToWishlist(Product)}
+                          onClick={() => {
+                            addToWishlist(Product);
+                            toastFunc("Wishlist Updated!");
+                          }}
                         >
                           <AiIcons.AiOutlineHeart
                             style={{
@@ -166,8 +166,6 @@ function ProductDatails({ Products }) {
           <div class="col-lg-12">
             <div class="product__details__tab">
               <ul class="nav nav-tabs" role="tablist">
-       
-
                 <li class="nav-item">
                   <Link
                     class="nav-link"
@@ -184,8 +182,6 @@ function ProductDatails({ Products }) {
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="tabs-3" role="tabpanel">
-               
-
                   <p className="rat_comment">
                     Comment <span></span>
                   </p>
