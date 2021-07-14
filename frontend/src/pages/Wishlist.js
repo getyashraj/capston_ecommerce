@@ -83,8 +83,11 @@ function Wishlist({ wishlistdata }) {
                           <div class="label new">New</div>
                           <ul class="product__hover">
                             <li>
-                              <Link to="/">
-                                <AiIcons.AiOutlineHeart style={picon} />
+                              <Link
+                                to="/"
+                                onClick={() => addToWishlist(wishlist)}
+                              >
+                                <AiIcons.AiFillHeart style={picon} />
                               </Link>
                             </li>
                             <li>
