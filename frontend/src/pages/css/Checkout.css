@@ -1,0 +1,42 @@
+.padding_left_20 {
+  padding-left: 20px;
+}
+.margin_left_30 {
+  margin-left: 30px;
+}
+.radio_label {
+  margin-top: 7px;
+  position: absolute;
+}
+
+.radio_card {
+  padding: 16px 24px 12px;
+}
+
+/* input[type="radio"]:after {
+  width: 20px;
+  height: 20px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #d1d3d1;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+input[type="radio"]:checked:after {
+  width: 20px;
+  height: 20px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #ca1515;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 1px solid #ca1515;
+} */

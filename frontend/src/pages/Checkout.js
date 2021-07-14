@@ -4,11 +4,15 @@ import { connect } from "react-redux";
 import axios from "axios";
 import * as TiIcons from "react-icons/ti";
 import * as FaIcons from "react-icons/fa";
-import logo from './img/logo.webp';
+import logo from "./img/logo.webp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {empty_to_cart_handle,delete_to_cart_handle} from "../actions/prostore";
+import {
+  empty_to_cart_handle,
+  delete_to_cart_handle,
+} from "../actions/prostore";
 import { useDispatch } from "react-redux";
+import "./css/Checkout.css";
 
 function paymentHandler(src) {
   return new Promise((resolve) => {
@@ -24,8 +28,7 @@ function paymentHandler(src) {
   });
 }
 
-function Checkout({ isAuthenticated, Cartvalue, User,EMPTY_TO_CART }) {
-  
+function Checkout({ isAuthenticated, Cartvalue, User, EMPTY_TO_CART }) {
   const dispatch = useDispatch();
 
   const [orderdata, setorderdata] = useState(0);
@@ -92,7 +95,6 @@ function Checkout({ isAuthenticated, Cartvalue, User,EMPTY_TO_CART }) {
             toast("Your order is confirmed!");
 
             setTimeout(submitorderfunc, 4000);
-
           });
       },
       prefill: {
@@ -106,20 +108,15 @@ function Checkout({ isAuthenticated, Cartvalue, User,EMPTY_TO_CART }) {
     paymentObject.open();
   }
 
-  
-
   async function submitorderfunc() {
- 
     await dispatch(empty_to_cart_handle(1));
- 
-    setorderdata(1);    
+
+    setorderdata(1);
   }
-  
-  if (orderdata) return <Redirect to="/" refresh="true"/>;
 
-  
-  if (!isAuthenticated) return <Redirect  to="/login" />;
+  if (orderdata) return <Redirect to="/" refresh="true" />;
 
+  if (!isAuthenticated) return <Redirect to="/login" />;
 
   return (
     <div className="checkout">
@@ -147,7 +144,39 @@ function Checkout({ isAuthenticated, Cartvalue, User,EMPTY_TO_CART }) {
               <div class="col-lg-8">
                 <h5>Billing detail</h5>
                 <div class="row">
-                  <div class="col-lg-6 col-md-6 col-sm-6">
+                  <div class="col-lg-12">
+                    <div className="card radio_card radio padding_left_20">
+                      <label>
+                        <input
+                          className="radio_label"
+                          type="radio"
+                          name="address"
+                          value="option1"
+                          checked={true}
+                        />
+                        <div className="margin_left_30">
+                          Jithendra 908723421
+                          <p>address, address, india, 500340</p>
+                        </div>
+                      </label>
+                    </div>
+                    <div className="card radio_card radio padding_left_20">
+                      <label>
+                        <input
+                          className="radio_label"
+                          type="radio"
+                          name="address"
+                          value="option2"
+                        />
+                        <div className="margin_left_30">
+                          yashu 123574894
+                          <p>unknown, unknown, 548973</p>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  {/* <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="checkout__form__input">
                       <p>
                         First Name <span>*</span>
@@ -166,12 +195,6 @@ function Checkout({ isAuthenticated, Cartvalue, User,EMPTY_TO_CART }) {
                   <div class="col-lg-12">
                     <div class="checkout__form__input">
                       <p>
-                        Address <span>*</span>
-                      </p>
-                      <input type="text" disabled value={User.address} />
-                    </div>
-                    <div class="checkout__form__input">
-                      <p>
                         Phone <span>*</span>
                       </p>
                       <input type="text" disabled value={User.phone} />
@@ -182,7 +205,36 @@ function Checkout({ isAuthenticated, Cartvalue, User,EMPTY_TO_CART }) {
                       </p>
                       <input type="text" disabled value={User.email} />
                     </div>
-                  </div>
+                    <div class="checkout__form__input">
+                      <p>
+                        Address <span>*</span>
+                      </p>
+                      <input type="text" disabled value={User.address} />
+                    </div>
+                    <div className="radio padding_left_20">
+                      <label>
+                        <input
+                          className="margin_left_15"
+                          type="radio"
+                          name="address"
+                          value={User.address}
+                          checked={true}
+                        />
+                        {User.address}
+                      </label>
+                    </div>
+                    <div className="radio padding_left_20">
+                      <label>
+                        <input
+                          className="margin_left_15"
+                          type="radio"
+                          name="address"
+                          value="option2"
+                        />
+                        Option 2
+                      </label>
+                    </div>
+                  </div> */}
                 </div>
               </div>
               <div class="col-lg-4">
@@ -196,7 +248,6 @@ function Checkout({ isAuthenticated, Cartvalue, User,EMPTY_TO_CART }) {
                         <span class="top__text__right">Total</span>
                       </li>
                       {Cartvalue.map((Cartvalue, index) => (
-                   
                         <li key={index}>
                           {index + 1}.{Cartvalue.title}
                           <span>Rs. {Cartvalue.price * Cartvalue.qty}.00</span>
@@ -209,7 +260,7 @@ function Checkout({ isAuthenticated, Cartvalue, User,EMPTY_TO_CART }) {
                       <li>
                         Subtotal <span>Rs. {Total}.00</span>
                       </li>
-                      
+
                       <li>
                         Total <span>Rs. {Total}.00</span>
                       </li>
@@ -239,5 +290,5 @@ const mapStateToProps = (state) => ({
   User: state.auth.user,
 });
 
-export default connect(mapStateToProps,{empty_to_cart_handle})(Checkout);
+export default connect(mapStateToProps, { empty_to_cart_handle })(Checkout);
 // export default connect(mapStateToProps, { login })(Login);
