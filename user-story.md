@@ -13,6 +13,6 @@
 
 - Clicking on the product card doesn't redirect to the product details ( Completed. )
 - Shows either hard errors or blank page if data not found; Add custom error pages.
-- Can not remove items from the Wishlist.
+- Can not remove items from the Wishlist. ( Completed. )
 - Clicking on "Add to Cart" need to give a toast message. ( Completed. )
 - Clicking on "wishlist" icon in product details need to give a toast message. ( Completed. )
